@@ -1,0 +1,8 @@
+# Deterministic boundary-test dependencies. The inference runtime is excluded
+# until AGD-005 selects and proves a packageable engine.
+-r requirements-core.txt
+httpx==0.27.2
+pytest==8.3.4
+pytest-cov==7.1.0
+ruff==0.8.4
+pyright==1.1.411

@@ -1,0 +1,36 @@
+{
+  "run_id": "2026-07-31-loop-001",
+  "baseline_commit": "37c9d13f4752ba5bfb50091c7ee5affe19686ea0",
+  "working_tree": "uncommitted implementation increment",
+  "gate_result": "proceed_with_conditions",
+  "artifacts": [
+    "RUN_MANIFEST.json",
+    "pytest-junit.xml",
+    "UAT_REPORT.md",
+    "AUDIT_READINESS_REPORT.md",
+    "PROOF_PACKET.md"
+  ],
+  "environment": {
+    "os": "Windows",
+    "python": "3.12.7",
+    "node": "22.14.0",
+    "npm": "10.9.2",
+    "rust": "not installed locally"
+  },
+  "results": {
+    "pytest_passed": 24,
+    "pytest_failed": 0,
+    "backend_main_line_coverage_percent": 80.62,
+    "ruff_errors": 0,
+    "pyright_errors": 0,
+    "svelte_errors": 0,
+    "svelte_warnings": 0,
+    "frontend_build": "pass",
+    "fixture_bytes": 33554432,
+    "chunk_bytes": 1048576,
+    "baseline_peak_traced_bytes": 33562436,
+    "bounded_peak_traced_bytes": 2112587,
+    "peak_reduction_ratio": 15.89
+  },
+  "claim_boundary": "Results apply to the tested backend ingest and completed-response lifecycle. They do not prove packaged inference, whole-app RSS, worker cancellation, release readiness, privacy certification, transcription accuracy, or ROI."
+}

@@ -2,15 +2,24 @@
 
 Local-first audio transcription for individuals. Drag a file in, get readable text out. Your recordings never leave your device.
 
-**Status:** Early development — not yet released.
+**Status:** Early scaffold — not buildable or released. The takeover baseline and
+promotion gates are documented in [`docs/TAKEOVER_BASELINE.md`](docs/TAKEOVER_BASELINE.md).
 
-## What it does
+## Intended product
 
-- Transcribe MP4, M4A, MP3, WAV, FLAC, OGG, AAC, WMA files locally
-- Per-segment timestamps, clickable playback sync
-- Export as plain text, SRT subtitles, Markdown, or JSON
-- English, Spanish, French, German, and more via Whisper
-- Auto-selects model size based on available RAM
+Agdalus is being developed to transcribe supported audio/video files locally,
+provide an editable timestamped transcript, and export common text/subtitle
+formats. These capabilities remain subject to the versioned evaluation and
+release gates; the current repository is not evidence that they work in a
+packaged application.
+
+## Ownership plan
+
+- [Product strategy and 12-week roadmap](docs/PRODUCT_STRATEGY_AND_ROADMAP.md)
+- [Governed backlog](docs/BACKLOG.md)
+- [Risk register](docs/RISK_REGISTER.md)
+- [Evaluation and promotion plan](docs/EVALUATION_PLAN.md)
+- [Architecture decisions](docs/adr/0001-windows-first-proof-wedge.md)
 
 ## Architecture
 
@@ -47,7 +56,7 @@ python -m venv .venv
 pip install -r requirements.txt
 cd ..
 
-# Run in dev mode (Tauri launches backend automatically)
+# Intended development command; packaged sidecar execution remains unproven.
 npm run tauri dev
 ```
 
@@ -57,7 +66,23 @@ npm run tauri dev
 npm run tauri build
 ```
 
-Produces a signed installer for the current platform. CI builds for both Mac and Windows via `.github/workflows/release.yml`.
+The release workflow is a scaffold. It does not currently produce an evidenced
+working or signed installer; required packaging assets, sidecar assembly,
+lockfiles, signing configuration, and clean-machine verification are roadmap
+work.
+
+### Deterministic backend checks
+
+```powershell
+py -3.12 -m venv .venv-test
+.\.venv-test\Scripts\python.exe -m pip install -r backend\requirements-test.txt
+.\.venv-test\Scripts\python.exe -m pytest --cov=backend.main --cov-fail-under=80
+.\.venv-test\Scripts\ruff.exe check backend
+.\.venv-test\Scripts\pyright.exe backend
+```
+
+The latest bounded-ingest evidence is recorded in the
+[`Loop 001 proof packet`](docs/evidence/runs/2026-07-31-loop-001/PROOF_PACKET.md).
 
 ## Relationship to Verbatim
 

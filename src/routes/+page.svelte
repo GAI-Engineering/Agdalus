@@ -134,7 +134,6 @@
     ondragover={(e) => { e.preventDefault(); isDragOver = true; }}
     ondragleave={() => { isDragOver = false; }}
     ondrop={onDrop}
-    role="region"
     aria-label="Drop zone"
   >
     {#if file}
