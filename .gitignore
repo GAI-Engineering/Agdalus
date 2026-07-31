@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+*.whl
+
+# Node / SvelteKit
+node_modules/
+.svelte-kit/
+.vite/
+build/
+
+# Tauri
+src-tauri/target/
+
+# Models (user-downloaded, not committed)
+models/
+*.bin
+*.pt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/
+
+# Env
+.env
+.env.local
