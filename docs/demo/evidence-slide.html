@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agdalus Loop 001 evidence</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, "Segoe UI", system-ui, sans-serif;
+        background: #f6f5f1;
+        color: #171a1f;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; }
+      main {
+        width: 1280px;
+        min-height: 720px;
+        padding: 56px 64px;
+        background:
+          radial-gradient(circle at 92% 8%, rgba(74, 111, 165, 0.18), transparent 28%),
+          #f6f5f1;
+      }
+      .eyebrow { color: #4a6fa5; font-size: 16px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+      h1 { margin: 10px 0 8px; font-size: 48px; letter-spacing: -.04em; }
+      .subtitle { margin: 0 0 34px; color: #5f6670; font-size: 20px; }
+      .grid { display: grid; grid-template-columns: 1.35fr .8fr; gap: 24px; }
+      .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .card, .boundary {
+        background: rgba(255,255,255,.92);
+        border: 1px solid #dddcd7;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(23,26,31,.06);
+      }
+      .card { padding: 26px; min-height: 172px; }
+      .value { font-size: 44px; line-height: 1; font-weight: 750; color: #315785; }
+      .label { margin-top: 13px; font-size: 17px; font-weight: 650; }
+      .note { margin-top: 8px; color: #68707a; font-size: 14px; line-height: 1.4; }
+      .boundary { padding: 28px; border-top: 6px solid #c07a29; }
+      .boundary h2 { margin: 0 0 8px; font-size: 25px; }
+      .decision { color: #98590f; font-weight: 750; font-size: 18px; }
+      ul { padding-left: 20px; margin: 20px 0 0; color: #4d535c; line-height: 1.55; }
+      footer { display: flex; justify-content: space-between; margin-top: 26px; color: #6b7179; font-size: 13px; }
+      code { font-family: "Cascadia Code", Consolas, monospace; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">Agdalus · Development evidence demo</div>
+      <h1>Bounded ingest, measured</h1>
+      <p class="subtitle">Loop 001 evidence for the backend upload and response-lifecycle slice</p>
+      <div class="grid">
+        <section class="metrics" aria-label="Evidence metrics">
+          <article class="card">
+            <div class="value">24 / 24</div>
+            <div class="label">Loop 001 tests passed</div>
+            <div class="note">Unit, fixture integration, lifecycle, and allocation evaluation.</div>
+          </article>
+          <article class="card">
+            <div class="value">80.62%</div>
+            <div class="label"><code>backend.main</code> coverage</div>
+            <div class="note">An enforced module threshold, not whole-product coverage.</div>
+          </article>
+          <article class="card">
+            <div class="value">15.89x</div>
+            <div class="label">lower traced Python peak</div>
+            <div class="note">32 MiB synthetic comparison; <code>tracemalloc</code>, not application RSS.</div>
+          </article>
+          <article class="card">
+            <div class="value">1 MiB</div>
+            <div class="label">maximum requested read</div>
+            <div class="note">Bounded backend persistence with partial-file cleanup.</div>
+          </article>
+        </section>
+        <aside class="boundary">
+          <div class="decision">Decision: proceed with conditions</div>
+          <h2>What this does not prove</h2>
+          <ul>
+            <li>Packaged Whisper or FFmpeg inference</li>
+            <li>Whole-process memory or speed</li>
+            <li>Worker cancellation and crash cleanup</li>
+            <li>Authenticated sidecar lifecycle</li>
+            <li>Accuracy, privacy certification, ROI, or release readiness</li>
+          </ul>
+        </aside>
+      </div>
+      <footer>
+        <span>Run: 2026-07-31-loop-001</span>
+        <span>Source: <code>docs/evidence/runs/2026-07-31-loop-001</code></span>
+      </footer>
+    </main>
+  </body>
+</html>

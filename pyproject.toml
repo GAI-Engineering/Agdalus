@@ -14,7 +14,7 @@ line-length = 100
 select = ["E", "F", "I", "B", "UP"]
 
 [tool.pyright]
-include = ["backend"]
+include = ["backend", "scripts"]
 exclude = ["backend/tests"]
 pythonVersion = "3.11"
 typeCheckingMode = "basic"

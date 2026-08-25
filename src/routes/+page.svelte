@@ -12,6 +12,7 @@
   let errorMsg = $state('');
   let detectedLang = $state('');
   let usedModel = $state('');
+  let demoMode = $state(false);
   let abortCtrl = $state<AbortController | null>(null);
 
   let isDragOver = $state(false);
@@ -37,6 +38,7 @@
     segments = [];
     status = 'idle';
     errorMsg = '';
+    demoMode = false;
   }
 
   function onDrop(e: DragEvent) {
@@ -48,6 +50,7 @@
       segments = [];
       status = 'idle';
       errorMsg = '';
+      demoMode = false;
     }
   }
 
@@ -60,12 +63,14 @@
     errorMsg = '';
     detectedLang = '';
     usedModel = '';
+    demoMode = false;
 
     try {
       await transcribe(
         file,
         { language, model },
         (event) => {
+          if (event.demo) demoMode = true;
           if (event.type === 'segment') segments = [...segments, event];
           if (event.type === 'done') {
             detectedLang = event.language;
@@ -174,6 +179,12 @@
   </section>
 
   <!-- Progress indicator -->
+  {#if demoMode}
+    <div class="demo-banner" role="note">
+      Deterministic demo fixture — not Whisper output
+    </div>
+  {/if}
+
   {#if status === 'running'}
     <div class="progress" role="status" aria-live="polite">
       <span class="spinner" aria-hidden="true"></span>
@@ -281,6 +292,19 @@
   button.danger:hover { background: color-mix(in srgb, var(--danger) 12%, var(--surface)); }
 
   /* Progress */
+  .demo-banner {
+    background: #fff3cd;
+    border: 1px solid #d99a22;
+    border-radius: var(--radius);
+    color: #704900;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 7px 10px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
   .progress {
     display: flex;
     align-items: center;

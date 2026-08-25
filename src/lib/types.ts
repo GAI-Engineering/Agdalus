@@ -4,12 +4,14 @@ export interface Segment {
   end: number;
   text: string;
   confidence: number; // 0–1
+  demo?: boolean;
 }
 
 export interface DoneEvent {
   type: 'done';
   language: string;
   model: string;
+  demo?: boolean;
 }
 
 export type TranscriptEvent = Segment | DoneEvent;

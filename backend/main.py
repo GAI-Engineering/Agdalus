@@ -9,6 +9,7 @@ No auth, no sessions, no job IDs — consumer product, single user, local only.
 
 from __future__ import annotations
 
+import importlib
 import os
 import subprocess
 import tempfile
@@ -49,7 +50,7 @@ class ReadableUpload(Protocol):
 # Auto-select model by available RAM (rough heuristic)
 def _auto_model() -> str:
     try:
-        import psutil
+        psutil = importlib.import_module("psutil")
 
         ram_gb = psutil.virtual_memory().total / 1e9
     except ImportError:
@@ -174,7 +175,7 @@ _model_lock = threading.Lock()
 def _load_model(name: str) -> Any:
     # Lazy import keeps deterministic boundary tests independent of the large
     # inference runtime and makes missing runtime errors occur only when used.
-    import whisper
+    whisper = importlib.import_module("whisper")
 
     with _model_lock:
         if name not in _model_cache:
